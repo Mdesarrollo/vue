@@ -1,47 +1,74 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+
+    import { ref } from 'vue'
+
+    let Numero = ref()
+    let Vector = ref([])
+    Vector.value.length = 10
+
+    const Calcular = function () {
+
+    if(Numero.value < 0) {
+        Numero.value*=-1;
+    }
+
+    if (Numero.value <= 100 && Numero.value != 0) {
+        for (let i = 0; i < 10; i++) {
+        Vector.value[i] = Numero.value * (i + 1)
+        }
+    }
+    }
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <table>
+    <tr>
+      <td>{{ Numero }}x1 =</td>
+      <td>{{ Vector[0] }}</td>
+    </tr>
+    <tr>
+      <td>{{ Numero }}x2 =</td>
+      <td>{{ Vector[1] }}</td>
+    </tr>
+    <tr>
+      <td>{{ Numero }}x3 =</td>
+      <td>{{ Vector[2] }}</td>
+    </tr>
+    <tr>
+      <td>{{ Numero }}x4 =</td>
+      <td>{{ Vector[3] }}</td>
+    </tr>
+    <tr>
+      <td>{{ Numero }}x5 =</td>
+      <td>{{ Vector[4] }}</td>
+    </tr>
+    <tr>
+      <td>{{ Numero }}x6 =</td>
+      <td>{{ Vector[5] }}</td>
+    </tr>
+    <tr>
+      <td>{{ Numero }}x7 =</td>
+      <td>{{ Vector[6] }}</td>
+    </tr>
+    <tr>
+      <td>{{ Numero }}x8 =</td>
+      <td>{{ Vector[7] }}</td>
+    </tr>
+    <tr>
+      <td>{{ Numero }}x9 =</td>
+      <td>{{ Vector[8] }}</td>
+    </tr>
+    <tr>
+      <td>{{ Numero }}x10 =</td>
+      <td>{{ Vector[9] }}</td>
+    </tr>
+  </table>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <h1 v-show="Numero == 0">Nada, numero 0</h1>
+  <h1 v-show="Numero > 100">Nada, numero muy grande</h1>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <input type="text" v-model="Numero" />
+  <button @click="Calcular">Click</button>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<style scoped></style>
